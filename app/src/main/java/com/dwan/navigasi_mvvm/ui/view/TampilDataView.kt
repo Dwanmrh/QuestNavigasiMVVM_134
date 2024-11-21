@@ -22,3 +22,11 @@ fun TampilDataView(
 
     }
 }
+
+@Composable
+fun TampilData(
+    param: String,
+    argu: String
+) {
+
+}
