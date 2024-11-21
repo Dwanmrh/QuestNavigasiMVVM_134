@@ -16,6 +16,7 @@ import com.dwan.navigasi_mvvm.ui.view.FormulirView
 
 enum class Halaman {
     FORMULIR,
+    TAMPILDATA
 }
 
 @Composable
