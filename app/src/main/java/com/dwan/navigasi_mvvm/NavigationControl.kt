@@ -44,6 +44,13 @@ fun NavigationControl(
                     modifier = modifier,
                     listJK = JenisK.map { id ->
                         context.getString(id)
+        },
+                    onSubmitClicked = { formData ->
+                        viewModel.saveDataSiswa(formData)
+                        navHost.navigate(Halaman.TAMPILDATA.name)
+                    }
+                )
+            }
         }
     }
 }
