@@ -13,6 +13,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.dwan.navigasi_mvvm.model.JenisKelamin.JenisK
 import com.dwan.navigasi_mvvm.ui.view.FormulirView
+import com.dwan.navigasi_mvvm.ui.view.TampilDataView
 
 enum class Halaman {
     FORMULIR,
@@ -49,6 +50,15 @@ fun NavigationControl(
                     onSubmitClicked = { formData ->
                         viewModel.saveDataSiswa(formData)
                         navHost.navigate(Halaman.TAMPILDATA.name)
+                    }
+                )
+            }
+            composable(route = Halaman.TAMPILDATA.name) {
+                TampilDataView(
+                    modifier = modifier,
+                    uiState = uiState,
+                    onBackButton = {
+                        navHost.popBackStack()
                     }
                 )
             }
