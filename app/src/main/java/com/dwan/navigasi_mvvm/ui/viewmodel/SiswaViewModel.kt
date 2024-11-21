@@ -1,4 +1,7 @@
 package com.dwan.navigasi_mvvm.ui.viewmodel
 
-class SiswaViewModel {
+import androidx.lifecycle.ViewModel
+
+class SiswaViewModel : ViewModel {
+
 }
