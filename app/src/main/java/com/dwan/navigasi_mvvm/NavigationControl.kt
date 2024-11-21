@@ -1,6 +1,7 @@
 package com.dwan.navigasi_mvvm
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
@@ -18,6 +19,6 @@ fun NavigationControl(
         viewModel: SiswaViewModel = viewModel(),
         navHost: NavHostController = rememberNavController()
     ) {
-
+        val uiState by viewModel.statusUI.collectAsState()
     }
 }
