@@ -10,6 +10,9 @@ import com.dwan.navigasi_mvvm.ui.viewmodel.SiswaViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 
+enum class Halaman {
+    FORMULIR,
+}
 
 @Composable
 fun NavigationControl(
