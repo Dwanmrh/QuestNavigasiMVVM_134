@@ -22,44 +22,38 @@ enum class Halaman {
 
 @Composable
 fun NavigationControl(
-
+    modifier: Modifier = Modifier,
+    viewModel: SiswaViewModel = viewModel(),
+    navHost: NavHostController = rememberNavController()
 ) {
-    @Composable
-    fun NavigationControl(
-        modifier: Modifier = Modifier,
-        viewModel: SiswaViewModel = viewModel(),
-        navHost: NavHostController = rememberNavController()
+    val uiState by viewModel.statusUI.collectAsState()
+
+    NavHost(
+        modifier = modifier,
+        navController = navHost,
+        startDestination = Halaman.FORMULIR.name
     ) {
-        val uiState by viewModel.statusUI.collectAsState()
-
-        NavHost(
-            modifier = modifier,
-            navController = navHost,
-            startDestination = Halaman.FORMULIR.name
+        composable(
+            route = Halaman.FORMULIR.name
         ) {
-            composable(
-                route = Halaman.FORMULIR.name
-            ) {
-                val context = LocalContext.current
+            val context = LocalContext.current
 
-                FormulirView(
-                    modifier = modifier,
-                    listJK = JenisK.map { id ->
-                        context.getString(id)
-        },
-                    onSubmitClicked = { formData ->
-                        viewModel.saveDataSiswa(formData)
-                        navHost.navigate(Halaman.TAMPILDATA.name)
-                    }
-                )
-            }
-            composable(route = Halaman.TAMPILDATA.name) {
-                TampilDataView(
-                    modifier = modifier,
-                    uiState = uiState,
-                    onBackButton = {
-                        navHost.popBackStack()
-                    }
+            FormulirView(
+                modifier = modifier,
+                listJK = JenisK.map { id ->
+                    context.getString(id) },
+                onSubmitClicked = { formData ->
+                    viewModel.saveDataSiswa(formData)
+                    navHost.navigate(Halaman.TAMPILDATA.name)
+                }
+            )
+        }
+        composable(route = Halaman.TAMPILDATA.name) {
+            TampilDataView(
+                modifier = modifier,
+                uiState = uiState,
+                onBackButton = {
+                    navHost.popBackStack() }
                 )
             }
         }
