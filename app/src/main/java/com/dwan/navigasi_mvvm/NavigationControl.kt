@@ -8,6 +8,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.dwan.navigasi_mvvm.ui.viewmodel.SiswaViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.compose.NavHost
 
 
 @Composable
@@ -21,5 +22,13 @@ fun NavigationControl(
         navHost: NavHostController = rememberNavController()
     ) {
         val uiState by viewModel.statusUI.collectAsState()
+
+        NavHost(
+            modifier = modifier,
+            navController = navHost,
+            startDestination = Halaman.FORMULIR.name
+        ) {
+
+        }
     }
 }
