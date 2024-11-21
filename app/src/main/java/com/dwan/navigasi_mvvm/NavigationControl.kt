@@ -53,9 +53,9 @@ fun NavigationControl(
                 modifier = modifier,
                 uiState = uiState,
                 onBackButton = {
-                    navHost.popBackStack() }
-                )
-            }
+                    navHost.popBackStack()
+                }
+            )
         }
     }
 }
